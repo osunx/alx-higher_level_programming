@@ -1,0 +1,25 @@
+#!/usr/bin/python3
+import os
+import sys
+
+pyfile = os.environ.get('PYFILE')
+
+if not pyfile:
+    sys.stderr.write("PYFILE environment variable not set.\n")
+    sys.exit(1)
+
+if not pyfile.endswith(".py"):
+    sys.stderr.write("PYFILE must be a .py file.\n")
+    sys.exit(1)
+
+out_file = pyfile[:-3] + ".pyc"
+
+sys.stderr.write("Compiling {} ...\n".format(pyfile))
+
+try:
+    os.system(f'python3 -m py_compile {pyfile}')
+    os.rename("__pycache__/" + out_file, out_file)
+    os.rmdir("__pycache__")
+except Exception as e:
+    sys.stderr.write(f"Error: {e}\n")
+    sys.exit(1)
