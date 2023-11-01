@@ -12,27 +12,33 @@ listint_t *insert_node(listint_t **head, int number)
 {
     listint_t *new, *current;
 
-	if (head == NULL)
-		return(NULL);
+	    if (head == NULL)
+    {
+        printf("Error: head is NULL\n");
+        return (NULL);
+    }
 
-	new = malloc(sizeof(listint_t));
-	if (new == NULL)
-		return(NULL);
+    new = malloc(sizeof(listint_t));
+    if (new == NULL)
+	{
+        printf("Error: malloc failed\n");
+        return (NULL);
+	}
 
 	new->n = number;
 	new->next = NULL;
 
-	if (head == NULL || number <= (*head)->n)
+	if (*head == NULL || number <= (*head)->next->n)
 	{
 		new->next = *head;
 		*head = new;
 		return(new);
-
 	}
 
 	current = *head;
-	while (current != NULL && current->next != NULL && current->next->n < number)
+	while (current && current->next != NULL && current->next->n < number) 
 		current = current->next;
+
 	new->next = current->next;
 	current->next = new;
 
