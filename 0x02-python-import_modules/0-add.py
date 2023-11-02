@@ -6,6 +6,5 @@ if __name__ == "__main__":
 
     n = 1
     u = 2
-    m = add(n, u)
 
-    print("{} + {} = {}".format(n, u, m))
+    print("{} + {} = {}".format(n, u, add(n, u)))
