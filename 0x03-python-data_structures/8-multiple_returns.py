@@ -6,4 +6,4 @@ def multiple_returns(sentence):
         ntuple = 0, "None"
     else:
         ntuple = len(sentence), sentence[0]
-        return ntuple
+    return ntuple
