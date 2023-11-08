@@ -16,5 +16,11 @@ def square_matrix_simple(matrix):
     Returns:
         list: A new matrix with each value as the square of the value of the input.
     """
-    new_matrix = [[num**2 for num in row] for row in matrix]
+    """new_matrix = [[num**2 for num in row] for row in matrix]
+    return new_matrix
+    """
+    new_matrix = []
+    for col in matrix:
+        result = list(map(lambda x: x**2, col))
+        new_matrix.append(result)
     return new_matrix
