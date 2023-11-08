@@ -5,7 +5,9 @@ def common_elements(set_1, set_2):
     Write a function that returns a set of common elements in two sets.
     """
 
-    common_elements = set_1.intersection(set_2)
+    rset = set()
 
-    for item in common_elements:
-        return item
+    for i in set_1:
+        if i in set_2:
+            rset.add(i)
+    return rset
